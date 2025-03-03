@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Следующая страница",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Start": {
+    "message": "Начало",
+    "description": "The label for category Start in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Start.link.generated-index.description": {
+    "message": "Регистрация аккаунта разработчика, создание и редактирование приложений, создание Apps URLs для авторизации через аккаунт TeleStore",
+    "description": "The generated-index page description for category Start in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.API & SDK": {
+    "message": "API и SDK",
+    "description": "The label for category API & SDK in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.API & SDK.link.generated-index.description": {
+    "message": "Настройка, авторизация пользователей, сохранение прогресса в игре, создание инвойсов и т.д.",
+    "description": "The generated-index page description for category API & SDK in sidebar tutorialSidebar"
+  }
+}
