@@ -9,12 +9,11 @@ Welcome to the Documentation for Developers of the TeleStore online apps & games
 ## Requirements for Applications Published on TeleStore
 
 Your application must integrate and configure the TeleStore API or SDK for at least the following functions:
-1. Tracking users who launched your application from TeleStore.
-2. User registration and authentication through the TeleStore account.
+1. Tracking users who launched your application from within TeleStore.
+2. User registration and login with a TeleStore account (in case your app has registration and login functionality).
 
-   > You must also create an App URL linked to your application; otherwise, registration and authentication will not work. More details can be found in the section [Creating App URLs for Authentication through TeleStore](start/app-url).
 3. Accepting and sending payments using the TeleStore payment system and the user's TeleStore account.
-   > ⚠ Important! All payments for TeleStore users must be processed through the TeleStore payment system.
+   > ❗Important! All payments for TeleStore users must be processed through the TeleStore payment system.
 4. The application's layout must be optimized for both desktop and mobile devices.
 5. Prohibited content includes: **[NEEDS EDIT]**
     - Politics

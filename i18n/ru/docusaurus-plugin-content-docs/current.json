@@ -12,7 +12,7 @@
     "description": "The generated-index page description for category Start in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.API & SDK": {
-    "message": "API и SDK",
+    "message": "TeleStore Core API и SDK",
     "description": "The label for category API & SDK in sidebar tutorialSidebar"
   },
   "sidebar.tutorialSidebar.category.API & SDK.link.generated-index.description": {

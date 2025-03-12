@@ -28,22 +28,22 @@ const txHistory = await teleStoreClient.GetTransactionHistory({
 ### JavaScript SDK
 ```javascript
 const getNewInvoiceLink = async (amount: number, partnerInfo: number, tag: string) => {
-  const response = await teleStoreClient.CreateInvoice({
-    amount: amount,
-    currency: "TeleUSD",
-    appId: <YOUR_APP_ID>,      // Your application ID from https://web.tele.store
-    partnerInfo: partnerInfo,  // User ID from your app
-    tag: tag                   // Info about bought item
-  }, true); // By default, telestore will redirect user to your app after payment, if you want to avoid this, set to false
+    const response = await teleStoreClient.CreateInvoice({
+        amount: amount,
+        currency: "TeleUSD",
+        appId: `<YOUR_APP_ID>`,     // Your application ID from https://web.tele.store 
+        partnerInfo: partnerInfo,   // User ID from your app
+        tag: tag                    // Info about bought item
+    }, true);                       // By default, telestore will redirect user to your app after payment, if you want to avoid this, set to false
 
-  if (response.error || !response.result) {
-      throw response.error || !response.result; // Your error handling
-  }
+    if (response.error || !response.result) {
+        throw response.error || !response.result; // Your error handling
+    }
 
-  return response.result.link;
+    return response.result.link;
 }
 
-// result example
+// Result example
 // https://web.tele.store/shop?invoice=ISDW2JF3AFSTP&redirect=true
 const navigateUrl = await getNewInvoiceLink(20, `<YOUR_USER_ID>`, `<BOUGHT_ITEM_INFO>`);
 ```

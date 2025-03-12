@@ -32,3 +32,28 @@
 .color__black {
   color: black;
 }
+
+.disabled {
+  color: #555
+}
+
+.button {
+  color: var(--ifm-color-primary);
+  background: var(--ifm-code-background);
+  padding: 2px 4px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+span.button:hover {
+  cursor: default;
+  color: var(--ifm-color-primary);
+}
+
+.important {
+  background: rgba(235,115,30,.25);
+  padding: 5px 15px;
+  margin: 15px auto;
+  border-radius: 15px;
+  font-weight: bold;
+}

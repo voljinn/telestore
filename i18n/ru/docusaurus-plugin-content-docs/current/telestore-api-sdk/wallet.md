@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Использование Кошелька
+# Использование кошелька
 
 ## Получение истории транзакций
 
@@ -33,41 +33,21 @@ const getNewInvoiceLink = async (amount: number, partnerInfo: number, tag: strin
     const response = await teleStoreClient.CreateInvoice({
         amount: amount,
         currency: "TeleUSD",
-        appId: <YOUR_APP_ID>,      // Ваш идентификатор приложения с https://web.tele.store
-            partnerInfo: partnerInfo,  // ID пользователя из вашего приложения
-            tag: tag                   // Информация о купленном товаре
-            }, true); // По умолчанию, telestore перенаправит пользователя на ваше приложение после оплаты, если вы хотите этого избежать, установите false
+        appId: `<YOUR_APP_ID>`,     // Ваш идентификатор приложения с https://web.tele.store
+        partnerInfo: partnerInfo,   // ID пользователя из вашего приложения
+        tag: tag                    // Информация о купленном товаре
+    }, true);                       // По умолчанию, telestore перенаправит пользователя на ваше приложение после оплаты, если вы хотите этого избежать, установите false
 
-            if (response.error || !response.result) {
-                throw response.error || !response.result; // Обработка ошибок
-            }
+    if (response.error || !response.result) {
+        throw response.error || !response.result; // Обработка ошибок
+    }
 
-            return response.result.link;
-            }
+    return response.result.link;
+}
 
-            // Пример результата
-            // https://web.tele.store/shop?invoice=ISDW2JF3AFSTP&redirect=true
-            const navigateUrl = await getNewInvoiceLink(20, \<YOUR_USER_ID>\, \<BOUGHT_ITEM_INFO>\);
-
-                // Перенаправьте пользователя на ссылку из полученного объекта.const getNewInvoiceLink = async (amount: number, partnerInfo: number, tag: string) => {
-                    const response = await teleStoreClient.CreateInvoice({
-                    amount: amount,
-                    currency: "TeleUSD",
-                    appId: <YOUR_APP_ID>,      // Ваш идентификатор приложения с https://web.tele.store
-                    partnerInfo: partnerInfo,  // ID пользователя из вашего приложения
-                    tag: tag                   // Информация о купленном товаре
-                }, true); // По умолчанию, telestore перенаправит пользователя на ваше приложение после оплаты, если вы хотите этого избежать, установите false
-
-                if (response.error || !response.result) {
-                    throw response.error || !response.result; // Обработка ошибок
-                }
-
-                return response.result.link;
-                }
-
-                // Пример результата
-                // https://web.tele.store/shop?invoice=ISDW2JF3AFSTP&redirect=true
-                const navigateUrl = await getNewInvoiceLink(20, \<YOUR_USER_ID>\, \<BOUGHT_ITEM_INFO>\);
+// Пример результата
+// https://web.tele.store/shop?invoice=ISDW2JF3AFSTP&redirect=true
+const navigateUrl = await getNewInvoiceLink(20, `\<YOUR_USER_ID>\`, `\<BOUGHT_ITEM_INFO>\`);
 ```
 Перенаправьте пользователя на **link** из полученного объекта.
 
