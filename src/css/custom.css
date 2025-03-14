@@ -37,6 +37,10 @@
   color: #555
 }
 
+.button, .checkbox {
+  display: inline-block;
+}
+
 .button {
   color: var(--ifm-color-primary);
   background: var(--ifm-code-background);
@@ -45,15 +49,41 @@
   font-weight: bold;
 }
 
-span.button:hover {
+.checkbox {
+  padding: 2px 4px;
+  border-radius: 5px;
+  border: 1px solid var(--ifm-color-primary);
+}
+
+div.button:hover {
   cursor: default;
   color: var(--ifm-color-primary);
 }
 
-.important {
-  background: rgba(235,115,30,.25);
+.hint, .important {
   padding: 5px 15px;
   margin: 15px auto;
   border-radius: 15px;
-  font-weight: bold;
+  font-style: italic;
+}
+
+.important {
+  background: rgba(235,115,30,.25);
+}
+
+.hint {
+  background: rgba(255,210,70,.25);
+}
+
+span.type {
+  padding: 3px 15px;
+  border-radius: 5px;
+}
+
+span.type.post {
+  background: rgba(70,125,30,.5);
+}
+
+span.type.get {
+  background: rgba(135,120,225,.5);
 }

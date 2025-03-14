@@ -1,0 +1,166 @@
+---
+sidebar_position: 4
+---
+
+# API TeleStore
+
+## Intro
+
+All API data is available in a result field of JSON-RPC format.
+HTTP response from the server always has **200 (OK)** status code, if there was no server errors.
+If some expected or unexpected errors have occurred, the error field will contain the `code` and `message` of the error.
+The **id** field is used for request/response identification **(nonce)** in some crucial scenarios to exclude the possible doubling.
+
+## /appauth/v1/
+
+### <span className="type get">GET</span> get_teleuser_details
+
+Returns the user data for the current limited session.
+
+#### Response
+
+```json
+{
+  "result": {
+    "timetick": 0,
+    "firstname": "string",
+    "lastname": "string",
+    "phone": "string",
+    "avatar_file": 0,
+    "email": "string",
+    "trex_id": 0,
+    "telegram": 0,
+    "agent_id": 0,
+    "agent_location": "string",
+    "agent_userid": "string",
+    "flags": 0,
+    "company_name": "string",
+    "app_limit": 0,
+    "new_user_tariff_group": 0,
+    "ga_id": "string",
+    "agent_code": "string",
+    "friend_code": "string",
+    "promotasks": [
+      {
+        "id": 0,
+        "max": 0,
+        "current": 0
+      }
+    ]
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_balance
+
+Gets the balance of a user, who gave the permission for the limited session.
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "amount": 0,
+      "currency": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> save_app_user_data
+
+Receives and saves a stringified JSON with app user data (in body). The application and user are extracted from the session.
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> list_app_user_data
+
+Gets the last 5 app user data files for the app and the user from the session.
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "datetime": "2025-03-14T15:46:50.668Z",
+      "file_id": 0,
+      "filename": "string",
+      "filesize": 0,
+      "crc32hash": "string",
+      "url": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> delete_app_user_data
+
+Deletes the app user data file.
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> make_payment
+
+Creates a direct payment from the user to the app which initiated the limited session.
+
+#### Parameters
+
+```json
+{
+  "amount": 0,
+  "currency": "string",
+  "tag": "string"
+}
+```
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```

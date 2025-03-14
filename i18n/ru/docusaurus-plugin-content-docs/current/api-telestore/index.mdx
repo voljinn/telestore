@@ -1,0 +1,165 @@
+---
+sidebar_position: 4
+---
+
+# API TeleStore
+
+## Интро
+Данные ответов всех API содержатся в поле result JSON-RPC формата.
+http-ответ сервера всегда имеет код **200 (OK)**, если обработка запроса прошла в штатном режиме.
+В случае предсказуемых / обработанных ошибок, поле **error** содержит `code` и `message` ошибки.
+Поле **id** используется для проброса идентификатора **(nonce)** запроса в некоторых критичных сценариях для исключения возможных повторов.
+
+## /appauth/v1/
+
+### <span className="type get">GET</span> get_teleuser_details
+
+Возвращает данные пользователя для текущей ограниченной сессии.
+
+#### Ответ
+
+```json
+{
+  "result": {
+    "timetick": 0,
+    "firstname": "string",
+    "lastname": "string",
+    "phone": "string",
+    "avatar_file": 0,
+    "email": "string",
+    "trex_id": 0,
+    "telegram": 0,
+    "agent_id": 0,
+    "agent_location": "string",
+    "agent_userid": "string",
+    "flags": 0,
+    "company_name": "string",
+    "app_limit": 0,
+    "new_user_tariff_group": 0,
+    "ga_id": "string",
+    "agent_code": "string",
+    "friend_code": "string",
+    "promotasks": [
+      {
+        "id": 0,
+        "max": 0,
+        "current": 0
+      }
+    ]
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_balance
+
+Получает баланс пользователя, который дал разрешение для ограниченной сессии.
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "amount": 0,
+      "currency": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> save_app_user_data
+
+Принимает и сохраняет строку (stringified) JSON с данными пользователя приложения (в теле запроса). Приложение и пользователь извлекаются из сессии.
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> list_app_user_data
+
+Получает последние 5 файлов данных пользователя приложения для приложения и пользователя из сессии.
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "datetime": "2025-03-14T15:46:50.668Z",
+      "file_id": 0,
+      "filename": "string",
+      "filesize": 0,
+      "crc32hash": "string",
+      "url": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> delete_app_user_data
+
+Удаляет файл данных пользователя приложения.
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> make_payment
+
+Создает прямой платеж от пользователя к приложению, которое инициировало ограниченную сессию.
+
+#### Параметры
+
+```json
+{
+  "amount": 0,
+  "currency": "string",
+  "tag": "string"
+}
+```
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```

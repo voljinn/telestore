@@ -2,4 +2,5 @@
 sidebar_position: 3
 ---
 
-# TeleStore Core API & SDK
+# Main SDK Functions
+
