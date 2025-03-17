@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # TeleStore Test App
@@ -8,7 +8,7 @@ sidebar_position: 2
 
 This application is made for easier integration of TeleStore SDK with examples, including using the SDK for applications without server side.
 
-The application consists of two parts: client-side and server-side. Your application may not have a server-side, but some processes may differ depending on your implementation.
+The application consists of two parts: client-side and server-side. Your application may not have a server side, and some processes may differ depending on your implementation.
 
 This documentation is also available at [GitHub](https://github.com/telestore-rep/test-app).
 
@@ -60,7 +60,7 @@ The param `check` contains the hashed HMACSHA256 with a developer's public key a
 check=ehcX3ApkjpyV42SaeFRALNQ17S7Q0ksitgcXSWRTd3A
 ```
 
-#### Data Validation
+### Data Validation
 
 It is recommended to check the signature to ensure undisturbed communication. Validation can be performed either on the server side or on the client side (not recommended, because you need to store the public key on the client side).
 
@@ -153,9 +153,9 @@ To transfer funds from a user's account to your account, send an authorized requ
 ```
 POST https://web.tele.store/appauth/v1/make_payment  
 BODY {  
-"amount": 10, // transaction amount  
-"currency": "TeleUSD",  
-"tag": "Любое описание" // transaction description  
+    "amount": 10, // transaction amount  
+    "currency": "TeleUSD",  
+    "tag": "Любое описание" // transaction description  
 }
 ```
 
@@ -167,7 +167,7 @@ You can save any necessary application information using an authorized request t
 ```
 POST https://web.tele.store/appauth/v1/save_app_user_data  
 BODY {  
-<any JSON data> 
+    <any JSON data> 
 }
 ```
 
@@ -188,9 +188,9 @@ GET https://web.tele.store/appauth/v1/list_app_user_data
 
 For easier development, we recommend using the [official TeleStore SDK](https://github.com/telestore-rep/SDK). It allows you to obtain new sessions, create invoices, retrieve transaction history and SSE updates, etc.
 
-### Creating a New Session (SDK)
+### Creating a New Session
 
-To create a new session, you need to generate a new User Key in your TeleStore developer account (Profile ➡ Security ➡ User keys).
+[//]: # (To create a new session, you need to generate a new User Key in your TeleStore developer account &#40;Profile ➡ Security ➡ User keys&#41;.)
 
 [Example of session creation via SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/sdk_connect/route.ts#L7)
 
@@ -203,7 +203,7 @@ GET https://web.tele.store/api/v1/teleuser_details
 
 [Example of retrieving account information](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/teleuser_detailts/route.ts#L8)
 
-#### Subscribing to SSE
+### Subscribing to SSE
 
 To subscribe to SSE events, create an object of the `EventSource` class ([recommended library](https://www.npmjs.com/package/eventsource)):
 
@@ -224,7 +224,7 @@ esLink.onmessage = async (event) => {
 }
 
 esLink.onerror = (error) => {
-  console.error("Ошибка EventSource:", error);
+  console.error("EventSource error:", error);
 }
 ```
 
@@ -315,7 +315,7 @@ PARAMS {
 
 [Example of retrieving transaction history](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/get_transactions/route.ts#L9)
 
-#### Creating an Invoice
+### Creating an Invoice
 
 [Example of invoice creation via SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/server/page.tsx#L175)
 

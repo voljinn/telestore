@@ -107,6 +107,26 @@ const config = {
                 label: 'Intro',
                 to: '/docs/intro',
               },
+              {
+                label: 'Getting Started',
+                to: '/docs/start',
+              },
+              {
+                label: 'Working with SDK',
+                to: '/docs/sdk',
+              },
+              {
+                label: 'Wallet',
+                to: '/docs/wallet',
+              },
+              {
+                label: 'TeleStore API',
+                to: '/docs/api-telestore',
+              },
+              {
+                label: 'TrexWallet API',
+                to: '/docs/api-trexwallet',
+              },
             ],
           },
           // {

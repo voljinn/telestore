@@ -5,9 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb8927cb-5909-4708-b8d8-7b3aa8eaf68e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/wallet/index.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/wallet/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/wallet/withdraw.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/wallet/index.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/wallet/info.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/wallet/withdraw.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sdk/main.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sdk/main.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api-telestore/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api-telestore/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/api-trexwallet/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/docs/api-trexwallet/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sdk/main.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sdk/main.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/sdk/testapp.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sdk/testapp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sdk/userkey.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sdk/userkey.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docusaurus.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/docusaurus.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/api-telestore/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/api-telestore/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/api-trexwallet/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/api-trexwallet/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/intro.md" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/intro.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/main.md" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/main.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/testapp.md" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/testapp.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/userkey.md" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/userkey.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/start/create-edit-app.md" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/start/create-edit-app.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/start/index.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/start/index.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-theme-classic/footer.json" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-theme-classic/footer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,37 +66,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.laravel-idea.search-composer-json&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/voljinn/Sites/docs.tele.store/docs/sdk&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/PhpStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.laravel-idea.search-composer-json": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/voljinn/Sites/docs.tele.store/i18n/ru/docusaurus-plugin-content-docs/current/wallet",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "proofread",
+    "ts.external.directory.path": "/Applications/PhpStorm.app/Contents/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/wallet" />
+      <recent name="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current" />
       <recent name="$PROJECT_DIR$/docs/sdk" />
       <recent name="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk" />
-      <recent name="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current" />
       <recent name="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/api-and-sdk" />
-      <recent name="$PROJECT_DIR$/backup/en" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/api-telestore" />
@@ -107,7 +129,7 @@
       <workItem from="1741010379230" duration="2387000" />
       <workItem from="1741358151875" duration="34458000" />
       <workItem from="1742143440306" duration="192000" />
-      <workItem from="1742143674049" duration="7748000" />
+      <workItem from="1742143674049" duration="18587000" />
     </task>
     <servers />
   </component>

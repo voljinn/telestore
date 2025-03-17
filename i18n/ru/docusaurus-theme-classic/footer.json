@@ -11,8 +11,28 @@
     "message": "More",
     "description": "The title of the footer links column with title=More in the footer"
   },
-  "link.item.label.Tutorial": {
-    "message": "Начало",
+  "link.item.label.Intro": {
+    "message": "Интро",
+    "description": "The label of footer link with label=Tutorial linking to /docs/intro"
+  },
+  "link.item.label.Getting Started": {
+    "message": "Начало работы",
+    "description": "The label of footer link with label=Tutorial linking to /docs/intro"
+  },
+  "link.item.label.Working with SDK": {
+    "message": "Работа с SDK",
+    "description": "The label of footer link with label=Tutorial linking to /docs/intro"
+  },
+  "link.item.label.Wallet": {
+    "message": "Кошелек",
+    "description": "The label of footer link with label=Tutorial linking to /docs/intro"
+  },
+  "link.item.label.TeleStore API": {
+    "message": "API TeleStore",
+    "description": "The label of footer link with label=Tutorial linking to /docs/intro"
+  },
+  "link.item.label.TrexWallet API": {
+    "message": "API TrexWallet",
     "description": "The label of footer link with label=Tutorial linking to /docs/intro"
   },
   "link.item.label.Stack Overflow": {

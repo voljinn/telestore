@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Тестовое приложение 
@@ -8,10 +8,11 @@ sidebar_position: 2
 
 Это приложение сделано для того, чтобы разработчикам было проще разобраться в работе SDK TeleStore на примерах, а также для ознакомления, как работать с SDK приложениям без серверной части. 
 
-Приложение состоит из двух частей: клиентской (Client-Side) и серверной (Server-Side). В вашем приложении может не быть серверной части, но некоторые процессы могут отличаться в зависимости от вашей реализации.
+Приложение состоит из двух частей: клиентской (Client-Side) и серверной (Server-Side). В вашем приложении может не быть серверной части, также некоторые процессы могут отличаться в зависимости от вашей реализации.
 
 Документация также доступна на [GitHub на английском языке](https://github.com/telestore-rep/test-app).
 
+<a href="install"></a>
 ## Установка
 ```
 sudo git clone https://github.com/telestore-rep/test-app telestore_test_app
@@ -60,7 +61,7 @@ usr=eyJpZCI6MTczMDIzMDQwMTgwOTIyOSwiZmlyc3RfbiI6IkZpcnN0bmFtZSIsInNlY29uZF9uIjoi
 check=ehcX3ApkjpyV42SaeFRALNQ17S7Q0ksitgcXSWRTd3A
 ```
 
-#### Валидация данных
+### Валидация данных
 
 Рекомендуется проверять подпись, чтобы гарантировать беспрепятственную связь. Валидацию можно выполнять как на серверной стороне, так и на клиентской (что не рекомендуется, так как вам придется хранить открытый ключ на клиентской стороне).
 
@@ -154,9 +155,9 @@ GET https://web.tele.store/appauth/v1/get_balance
 ```
 POST https://web.tele.store/appauth/v1/make_payment  
 BODY {  
-"amount": 10, // Сумма транзакции  
-"currency": "TeleUSD",  
-"tag": "Любое описание" // Описание транзакции  
+    "amount": 10, // Сумма транзакции  
+    "currency": "TeleUSD",  
+    "tag": "Любое описание" // Описание транзакции  
 }
 ```
 
@@ -168,7 +169,7 @@ BODY {
 ```
 POST https://web.tele.store/appauth/v1/save_app_user_data  
 BODY {  
-<любые JSON-данные> 
+    <любые JSON-данные> 
 }
 ```
 
@@ -189,9 +190,9 @@ GET https://web.tele.store/appauth/v1/list_app_user_data
 
 Для упрощения разработки мы рекомендуем использовать [официальный SDK TeleStore](https://github.com/telestore-rep/SDK). Он позволяет получать новые сессии, создавать инвойсы, извлекать историю транзакций и обновления SSE и многое другое.
 
-### Создание новой сессии (SDK)
+### Создание новой сессии
 
-Для создания новой сессии вам необходимо сгенерировать новый Ключ пользователя в вашем аккаунте разработчика TeleStore (Профиль ➡ Безопасность ➡ Ключи пользователя) (подробнее см. в разделе [Получение Ключа пользователя](userkey.md))
+[//]: # (Для создания новой сессии вам необходимо сгенерировать новый Ключ пользователя в вашем аккаунте разработчика TeleStore &#40;Профиль ➡ Безопасность ➡ Ключи пользователя&#41; &#40;подробнее см. в разделе [Получение Ключа пользователя]&#40;userkey.md&#41;&#41;)
 
 [Пример создания сессии через SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/sdk_connect/route.ts#L7)
 
@@ -204,7 +205,7 @@ GET https://web.tele.store/api/v1/teleuser_details
 
 [Пример получения информации об аккаунте](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/teleuser_detailts/route.ts#L8)
 
-#### Подписка на SSE
+### Подписка на SSE
 
 Чтобы подписаться на события SSE, создайте объект класса `EventSource` ([рекомендуемая библиотека](https://www.npmjs.com/package/eventsource)):
 
@@ -233,7 +234,7 @@ esLink.onerror = (error) => {
 
 ### Получение вебхуков
 
-Чтобы получать вебхуки, добавьте новый URL приложения (Профиль ➡ Безопасность ➡ URL приложений), указав флаг <span className="checkbox">✅ Использовать для вебхуков</span> и URL метода API, который будет служить вебхуком. Пример URL вебхука:
+Чтобы получать вебхуки, добавьте новый URL приложения (Профиль ➡ Безопасность ➡ URL приложений), указав флаг <span className="checkbox">✅ Использовать для webhooks</span> и URL метода API, который будет служить вебхуком. Пример URL вебхука:
 ```
 POST https://test.tele.store/webhook
 ```
@@ -316,7 +317,7 @@ PARAMS {
 
 [Пример получения истории транзакций](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/get_transactions/route.ts#L9)  
 
-#### Создание инвойса
+### Создание инвойса
 
 [Пример создания инвойса через SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/server/page.tsx#L175)  
 
