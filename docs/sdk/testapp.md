@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # TeleStore Test App
 
-## Интро
+## Intro
 
 This application is made for easier integration of TeleStore SDK with examples, including using the SDK for applications without server side.
 

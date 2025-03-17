@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bb8927cb-5909-4708-b8d8-7b3aa8eaf68e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sdk/main.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sdk/main.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/sdk/testapp.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sdk/testapp.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/testapp.md" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/testapp.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/userkey.md" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/sdk/userkey.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +107,7 @@
       <workItem from="1741010379230" duration="2387000" />
       <workItem from="1741358151875" duration="34458000" />
       <workItem from="1742143440306" duration="192000" />
-      <workItem from="1742143674049" duration="7113000" />
+      <workItem from="1742143674049" duration="7748000" />
     </task>
     <servers />
   </component>
