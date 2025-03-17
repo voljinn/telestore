@@ -76,6 +76,8 @@ div.button:hover {
 }
 
 span.type {
+  font-size: 75%;
+  vertical-align: 6.25%;
   padding: 3px 15px;
   border-radius: 5px;
 }

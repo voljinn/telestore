@@ -12,7 +12,8 @@ http-ответ сервера всегда имеет код **200 (OK)**, ес
 
 Также доступна [документация в Swagger](https://dev.tele.store:8081/api/swagger/index.html) (для доступа необходимо быть авторизованным в [Песочнице](https://dev.tele.store:8081)).
 
-## /appauth/v1/
+## AppAuth
+#### /appauth/v1/
 
 ### <span className="type get">GET</span> get_teleuser_details
 
@@ -126,6 +127,12 @@ http-ответ сервера всегда имеет код **200 (OK)**, ес
 
 Удаляет файл данных пользователя приложения.
 
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`file`|`int64`|временная метка сохраненных данных|
+
 #### Ответ
 
 ```json
@@ -143,7 +150,7 @@ http-ответ сервера всегда имеет код **200 (OK)**, ес
 
 Создает прямой платеж от пользователя к приложению, которое инициировало ограниченную сессию.
 
-#### Параметры
+#### Данные платежа
 
 ```json
 {
@@ -158,6 +165,1000 @@ http-ответ сервера всегда имеет код **200 (OK)**, ес
 ```json
 {
   "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+## Core
+#### /api/v1/
+
+### <span className="type get">GET</span> get_apps
+
+Получает список приложений.
+
+#### Параметры
+
+| Название      | Тип      | Описание                                                                                      |
+|---------------|----------|-----------------------------------------------------------------------------------------------|
+| `lastapp`     | `int64`  | последний временной штамп приложения, используется для пагинации в запросе                    |
+| `limit`       | `int32`  | количество результатов в ответе <br/> *По умолчанию: 5*                                       |
+| `categoryId`  | `int32`  | категория приложений                                                                          |
+| `owner`       | `int64`  | владелец (разработчик)                                                                        |
+| `flags`       | `int64`  | фильтр по флагам <br/>*Допустимые значения: `0`, `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, `1073741824`*|
+| `searchText`  | `string` | текстовый запрос для поиска                                                                   |
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "telegram_link": "string",
+      "game_link": "string",
+      "name": "string",
+      "full_name": "string",
+      "developer": "string",
+      "flags": 0,
+      "url_id": 0,
+      "small_img": 0,
+      "medium_img": 0,
+      "large_img": 0,
+      "categories": [
+        {
+          "category_name": "string",
+          "category_id": 0,
+          "position": 0
+        }
+      ],
+      "category_id": 0,
+      "position": 0
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_app_data
+
+Получает данные определенного приложения.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`apps`|`array[integer]`|массив идентификаторов приложений|
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "telegram_link": "string",
+      "game_link": "string",
+      "name": "string",
+      "full_name": "string",
+      "developer": "string",
+      "flags": 0,
+      "url_id": 0,
+      "small_img": 0,
+      "medium_img": 0,
+      "large_img": 0,
+      "categories": [
+        {
+          "category_name": "string",
+          "category_id": 0,
+          "position": 0
+        }
+      ],
+      "category_id": 0,
+      "position": 0
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> dev_list_my_apps
+
+Перечисляет все приложения для отправителя в качестве разработчика.
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "telegram_link": "string",
+      "game_link": "string",
+      "name": "string",
+      "full_name": "string",
+      "developer": "string",
+      "flags": 0,
+      "url_id": 0,
+      "small_img": 0,
+      "medium_img": 0,
+      "large_img": 0,
+      "categories": [
+        {
+          "category_name": "string",
+          "category_id": 0,
+          "position": 0
+        }
+      ],
+      "category_id": 0,
+      "position": 0
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> create_invoice
+
+Создает код инвойса для задач, связанных с приложением.
+
+#### Данные для создания инвойса
+
+```json
+{
+  "amount": 0,
+  "currency": "string",
+  "appId": 0,
+  "partnerInfo": "string",
+  "tag": "string"
+}
+```
+
+#### Ответ
+
+```json
+{
+  "result": {
+    "code": "string",
+    "currency": "string",
+    "typeTx": 0,
+    "amount": 0,
+    "state": "string",
+    "stateCode": 0,
+    "dateTxUTC": "2025-03-17T15:41:41.428Z",
+    "dateCodeUTC": "2025-03-17T15:41:41.428Z",
+    "isOwner": true
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> dev_upsert_app
+
+Обновляет данные приложения разработчика и регистрирует изменения. Каждое изменение в приложении, которое уже было одобрено, отправит приложение на модерацию.
+
+#### Данные приложения
+
+```json
+{
+  "game_link": "string",
+  "name": "string",
+  "full_name": "string",
+  "category_id": [
+    0
+  ],
+  "timetick": 0,
+  "url_id": 0,
+  "small_img": 0,
+  "medium_img": 0,
+  "large_img": 0,
+  "flags": 0
+}
+```
+
+#### Ответ
+
+```json
+{
+  "result": {
+    "timetick": 0,
+    "telegram_link": "string",
+    "game_link": "string",
+    "name": "string",
+    "full_name": "string",
+    "developer": "string",
+    "flags": 0,
+    "url_id": 0,
+    "small_img": 0,
+    "medium_img": 0,
+    "large_img": 0,
+    "categories": [
+      {
+        "category_name": "string",
+        "category_id": 0,
+        "position": 0
+      }
+    ],
+    "category_id": 0,
+    "position": 0
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> dev_save_user_task
+
+Сохраняет данные задачи для приложения.
+
+#### Массив данных задачи
+
+```json
+[
+  {
+    "app": 0,
+    "user": "string",
+    "task": 0,
+    "amount": 0
+  }
+]
+```
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "app": 0,
+      "user": "string",
+      "task": 0,
+      "error_message": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> dev_get_app_changes
+
+Получает историю изменений для данного приложения.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`app`|`int64`|ID приложения|
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "type": 0,
+      "date_changed": "2025-03-17T15:47:08.552Z",
+      "changer_name": "string",
+      "changer_role": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_bonus_stats
+
+Получает данные о бонусных выплатах.
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "amount": 0,
+      "type": 0,
+      "type_string": "string",
+      "period": 0,
+      "period_string": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> initiate_app_support
+
+Инициирует чат с разработчиком приложения и службой поддержки.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`app`|`int64`|ID приложения|
+
+#### Ответ
+
+```json
+{
+  "result": 0,
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> record_use
+
+Записывает данные об использовании приложения в журнал.
+
+#### Данные об использовании
+
+```json
+{
+  "app": 0
+}
+```
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_friends
+
+Получает список друзей.
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "fullname": "string",
+      "avatar": 0,
+      "flags": 0,
+      "timetick": 0
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_friends_requests
+
+Получает список запросов на добавление в друзья.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`toMe`|`boolean`|показывать только адресованные вызывающему<br/>*По умолчанию: `false`*|
+|`state`|`int32`|состояние запроса (Ожидает = 1, Принято = 2, Отклонено = 4)<br/>*Допустимые значения: `0`, `1`, `2`, `4`*|
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "target_name": "string",
+      "target_trex": 0,
+      "creator_name": "string",
+      "creator_trex": 0,
+      "creator_avatar": 0,
+      "target_avatar": 0,
+      "state": 0,
+      "creator": 0,
+      "target": 0,
+      "date_created": "2025-03-17T15:53:48.413Z",
+      "date_update": "2025-03-17T15:53:48.413Z"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> create_friend_requests
+
+Создает запрос на добавление в друзья.
+
+#### Запрос
+
+```json
+{
+  "target": 0,
+  "message": "string"
+}
+```
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> unfriend
+
+Удаляет из друзей целевого пользователя.
+
+#### Запрос
+
+```json
+{
+  "target": 0,
+  "message": "string"
+}
+```
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_referrals
+
+Получает список рефералов вызывающего.
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "trexId": 0
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_statistics
+
+Получает статистику использования приложения (вместе с необходимыми данными приложения).
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`lastAppsUsed`|`int32`|количество последних приложений для отображения|
+|`app`|`int64`|ID приложения; если присутствует, вернет данные только для одного приложения|
+|`start`|`string` `($date-time)`|начало периода, который следует включить в список<br/>*По умолчанию: `1 week ago`*|
+|`end`|`string` `($date-time)`|конец периода, который следует включить в список<br/>*По умолчанию: `now`*|
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "teleuser": 0,
+      "app": 0,
+      "date_use": "2025-03-17T16:01:14.857Z",
+      "game_link": "string",
+      "telegram_link": "string",
+      "url_id": 0,
+      "small_img": "string",
+      "medium_img": "string",
+      "large_img": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_merch
+
+Получает список товаров.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`app`|`int64`|(необязательно) фильтр по внутреннему ID приложения|
+|`currency`|`string`|(необязательно) фильтр по валюте<br/>*По умолчанию: `TeleUSD`*|
+|`price`|`int64`|(необязательно) фильтр по цене<br/>*По умолчанию: `0`*|
+|`flags`|`int32`|(необязательно) фильтр по флагам<br/>*Допустимые значения: `0`, `1`, `2`, `4`, `128`*|
+|`type`|`int32`|(необязательно) фильтр по типу<br/>*Допустимые значения: `0`, `1`, `2`, `3`, `4`, `5`*|
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "seller": 0,
+      "app": 0,
+      "name": "string",
+      "full_name": "string",
+      "price": 0,
+      "image": 0,
+      "flags": 0,
+      "type": 0,
+      "currency": "string",
+      "code": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> buy_merch
+
+Покупает товар из магазина.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`merchId`|`int64`|ID товара|
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_categories
+
+Получает список категорий.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`flags`|`int32`|флаги<br/>*Допустимые значения: `0`, `1`, `2`, `3`, `4`, `5`*|
+|`includeApps`|`int32`|количество приложений, которые нужно включить в результат<br/>*По умолчанию: `0`*|
+
+#### Ответ
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "parent": 0,
+      "flags": 0,
+      "name": "string",
+      "full_name": "string",
+      "display_position": 0,
+      "id": 0,
+      "apps": [
+        {
+          "timetick": 0,
+          "telegram_link": "string",
+          "game_link": "string",
+          "name": "string",
+          "full_name": "string",
+          "developer": "string",
+          "flags": 0,
+          "url_id": 0,
+          "small_img": 0,
+          "medium_img": 0,
+          "large_img": 0,
+          "categories": [
+            {
+              "category_name": "string",
+              "category_id": 0,
+              "position": 0
+            }
+          ],
+          "category_id": 0,
+          "position": 0
+        }
+      ]
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_promo_task_status
+
+Получает данные об определенной промо-задаче для вызывающего.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`promo_task`|`int32`|ID промо-задачи<br/>*Допустимые значения: `0`, `1`*|
+
+#### Ответ
+
+```json
+{
+  "result": 0,
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_teleuser_statistics
+
+Получает статистику пользователя (для вызывающего или для друга вызывающего).
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`client_id`|`int64`|(необязательно) ID пользователя|
+
+#### Ответ
+
+```json
+{
+  "result": {
+    "teleuser": 0,
+    "longest_streak": 0,
+    "total_friends": 0,
+    "total_apps_accessed": 0,
+    "level1ref": 0,
+    "level2ref": 0,
+    "level3ref": 0
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> join_ref_program
+
+Отправляет запрос на участие в реферальной программе. Сначала проверит соответствие условиям.
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> teleuser_details
+
+Получает данные пользователя вызывающего.
+
+#### Ответ
+
+```json
+{
+  "result": {
+    "timetick": 0,
+    "firstname": "string",
+    "lastname": "string",
+    "phone": "string",
+    "avatar_file": 0,
+    "email": "string",
+    "trex_id": 0,
+    "telegram": 0,
+    "agent_id": 0,
+    "agent_location": "string",
+    "agent_userid": "string",
+    "flags": 0,
+    "company_name": "string",
+    "app_limit": 0,
+    "new_user_tariff_group": 0,
+    "ga_id": "string",
+    "agent_code": "string",
+    "friend_code": "string",
+    "promotasks": [
+      {
+        "id": 0,
+        "max": 0,
+        "current": 0
+      }
+    ]
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> join_as_developer
+
+Отправляет запрос на изменение статуса пользователя на разработчика.
+<div className="important">❗️ Статусы Разработчик и Клиент взаимно исключают друг друга.</div>
+
+#### Необходимые данные (Имя, Фамилия, Название компании)
+
+```json
+{
+  "firstname": "string",
+  "lastname": "string",
+  "company_name": "string"
+}
+```
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> save_ga_id
+
+Сохраняет ID Google Analytics.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`ga_id`|`string`|-|
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> report_pwa_install
+
+Сообщает об установке PWA.
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+## Payment
+#### /api/v1/payment/
+
+### <span className="type get">GET</span> pay_card
+
+Создает опцию оплаты картой.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`amount`|`int32`|количество в TeleUSD|
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> pay_hype
+
+Создает опцию оплаты картой (HypePayment).
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`amount`|`int32`|количество в TeleUSD|
+
+#### Ответ
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+## Service
+#### /api/v1/service/
+
+### <span className="type post">POST</span> apply_code
+
+Применяет код, например, код агента, упакованный в короткий код.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`code`|`string`|-|
+|`crm_id`|`int64`|-|
+
+#### Ответ
+
+```json
+{
+  "result": {
+    "confirmationStatusCode": 0,
+    "result": "string",
+    "confirmCode": "string"
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> client_details
+
+Получает данные CRM пользователя в определенном формате.
+
+#### Параметры
+
+|Название|Тип|Описание|
+|-|-|-|
+|`phone`|`string`|-|
+|`telegram`|`int64`|-|
+|`crm_id`|`int64`|-|
+|`email`|`string`|-|
+
+#### Ответ
+
+```json
+{
+  "result": {
+    "client_id": 0,
+    "first_name": "string",
+    "last_name": "string",
+    "phone": "string",
+    "email": "string",
+    "flags": 0,
+    "telegram": 0,
+    "agent_code": "string",
+    "wallet_id": 0,
+    "company_name": "string",
+    "avatar_file": 0,
+    "new_user_tariff_group": 0
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_info
+
+Возвращает общую информацию о сервисе (рукопожатие/телеметрия).
+
+#### Ответ
+
+```json
+{
+  "result": {
+    "project_name": "string",
+    "version": "string",
+    "utc_time": "2025-03-17T16:23:11.698Z"
+  },
   "error": {
     "code": 0,
     "message": "string"

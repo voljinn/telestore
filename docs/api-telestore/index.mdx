@@ -11,7 +11,10 @@ HTTP response from the server always has **200 (OK)** status code, if there was 
 If some expected or unexpected errors have occurred, the error field will contain the `code` and `message` of the error.
 The **id** field is used for request/response identification **(nonce)** in some crucial scenarios to exclude the possible doubling.
 
-## /appauth/v1/
+You can also access the [documentation in Swagger](https://dev.tele.store:8081/api/swagger/index.html) (you need to be logged in to the [Sandbox](https://dev.tele.store:8081) to access it).
+
+## AppAuth
+#### /appauth/v1/
 
 ### <span className="type get">GET</span> get_teleuser_details
 
@@ -125,6 +128,12 @@ Gets the last 5 app user data files for the app and the user from the session.
 
 Deletes the app user data file.
 
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`file`|`int64`|timetick of a save data|
+
 #### Response
 
 ```json
@@ -142,7 +151,7 @@ Deletes the app user data file.
 
 Creates a direct payment from the user to the app which initiated the limited session.
 
-#### Parameters
+#### Payment Data
 
 ```json
 {
@@ -157,6 +166,1000 @@ Creates a direct payment from the user to the app which initiated the limited se
 ```json
 {
   "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+## Core
+#### /api/v1/
+
+### <span className="type get">GET</span> get_apps
+
+Gets the app list.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`lastapp`|`int64`|the last timetick of the app, when using pagination in the query|
+|`limit`|`int32`|the number of results in the response<br/>*Default: 5*|
+|`categoryId`|`int32`|category of apps|
+|`owner`|`int64`|owner (developer)|
+|`flags`|`int64`|the flags filter<br/>*Available values : `0`, `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`, `512`, `1073741824`*|
+|`searchText`|`string`|the search query|
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "telegram_link": "string",
+      "game_link": "string",
+      "name": "string",
+      "full_name": "string",
+      "developer": "string",
+      "flags": 0,
+      "url_id": 0,
+      "small_img": 0,
+      "medium_img": 0,
+      "large_img": 0,
+      "categories": [
+        {
+          "category_name": "string",
+          "category_id": 0,
+          "position": 0
+        }
+      ],
+      "category_id": 0,
+      "position": 0
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_app_data
+
+Gets a certain app's data.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`apps`|`array[integer]`|app IDs array|
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "telegram_link": "string",
+      "game_link": "string",
+      "name": "string",
+      "full_name": "string",
+      "developer": "string",
+      "flags": 0,
+      "url_id": 0,
+      "small_img": 0,
+      "medium_img": 0,
+      "large_img": 0,
+      "categories": [
+        {
+          "category_name": "string",
+          "category_id": 0,
+          "position": 0
+        }
+      ],
+      "category_id": 0,
+      "position": 0
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> dev_list_my_apps
+
+Lists all the apps for sender as developer.
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "telegram_link": "string",
+      "game_link": "string",
+      "name": "string",
+      "full_name": "string",
+      "developer": "string",
+      "flags": 0,
+      "url_id": 0,
+      "small_img": 0,
+      "medium_img": 0,
+      "large_img": 0,
+      "categories": [
+        {
+          "category_name": "string",
+          "category_id": 0,
+          "position": 0
+        }
+      ],
+      "category_id": 0,
+      "position": 0
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> create_invoice
+
+Creates invoice code for application related purposes.
+
+#### Data for Invoice Creation
+
+```json
+{
+  "amount": 0,
+  "currency": "string",
+  "appId": 0,
+  "partnerInfo": "string",
+  "tag": "string"
+}
+```
+
+#### Response
+
+```json
+{
+  "result": {
+    "code": "string",
+    "currency": "string",
+    "typeTx": 0,
+    "amount": 0,
+    "state": "string",
+    "stateCode": 0,
+    "dateTxUTC": "2025-03-17T15:41:41.428Z",
+    "dateCodeUTC": "2025-03-17T15:41:41.428Z",
+    "isOwner": true
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> dev_upsert_app
+
+Updates developer's app data and logs changes. \r\nEvery change to the app that is already approved will send the app to moderation.
+
+#### App Data
+
+```json
+{
+  "game_link": "string",
+  "name": "string",
+  "full_name": "string",
+  "category_id": [
+    0
+  ],
+  "timetick": 0,
+  "url_id": 0,
+  "small_img": 0,
+  "medium_img": 0,
+  "large_img": 0,
+  "flags": 0
+}
+```
+
+#### Response
+
+```json
+{
+  "result": {
+    "timetick": 0,
+    "telegram_link": "string",
+    "game_link": "string",
+    "name": "string",
+    "full_name": "string",
+    "developer": "string",
+    "flags": 0,
+    "url_id": 0,
+    "small_img": 0,
+    "medium_img": 0,
+    "large_img": 0,
+    "categories": [
+      {
+        "category_name": "string",
+        "category_id": 0,
+        "position": 0
+      }
+    ],
+    "category_id": 0,
+    "position": 0
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> dev_save_user_task
+
+Saves task data for the app.
+
+#### Array of task data
+
+```json
+[
+  {
+    "app": 0,
+    "user": "string",
+    "task": 0,
+    "amount": 0
+  }
+]
+```
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "app": 0,
+      "user": "string",
+      "task": 0,
+      "error_message": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> dev_get_app_changes
+
+Gets the changes history for a given app.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`app`|`int64`|app ID|
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "type": 0,
+      "date_changed": "2025-03-17T15:47:08.552Z",
+      "changer_name": "string",
+      "changer_role": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_bonus_stats
+
+Gets bonus payments data.
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "amount": 0,
+      "type": 0,
+      "type_string": "string",
+      "period": 0,
+      "period_string": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> initiate_app_support
+
+Initiates a chat with app developer and support.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`app`|`int64`|app ID|
+
+#### Response
+
+```json
+{
+  "result": 0,
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> record_use
+
+Records app usage into a log.
+
+#### Usage Data
+
+```json
+{
+  "app": 0
+}
+```
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_friends
+
+Gets list of friends.
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "fullname": "string",
+      "avatar": 0,
+      "flags": 0,
+      "timetick": 0
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_friends_requests
+
+Gets list of friend requests.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`toMe`|`boolean`|show only addressed to a caller<br/>*Default: `false`*|
+|`state`|`int32`|state of the request (Pending = 1, Accepted = 2, Declined = 4)<br/>*Available values: `0`, `1`, `2`, `4`*|
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "target_name": "string",
+      "target_trex": 0,
+      "creator_name": "string",
+      "creator_trex": 0,
+      "creator_avatar": 0,
+      "target_avatar": 0,
+      "state": 0,
+      "creator": 0,
+      "target": 0,
+      "date_created": "2025-03-17T15:53:48.413Z",
+      "date_update": "2025-03-17T15:53:48.413Z"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> create_friend_requests
+
+Creates a friend request.
+
+#### Request
+
+```json
+{
+  "target": 0,
+  "message": "string"
+}
+```
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> unfriend
+
+Unfriends the target.
+
+#### Request
+
+```json
+{
+  "target": 0,
+  "message": "string"
+}
+```
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_referrals
+
+Gets list of caller's referrals.
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "trexId": 0
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_statistics
+
+Gets the app usage statistics (along with necessary app data).
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`lastAppsUsed`|`int32`|number of last apps to list|
+|`app`|`int64`|app ID; if present will return data for one app only|
+|`start`|`string` `($date-time)`|start of the period to include in the list<br/>*Default: `1 week ago`*|
+|`end`|`string` `($date-time)`|end of the period to include in the list<br/>*Default: `now`*|
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "teleuser": 0,
+      "app": 0,
+      "date_use": "2025-03-17T16:01:14.857Z",
+      "game_link": "string",
+      "telegram_link": "string",
+      "url_id": 0,
+      "small_img": "string",
+      "medium_img": "string",
+      "large_img": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_merch
+
+Gets list of merch.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`app`|`int64`|(optional) internal app ID filter|
+|`currency`|`string`|(optional) currency filter<br/>*Default: `TeleUSD`*|
+|`price`|`int64`|(optional) price filter<br/>*Default: `0`*|
+|`flags`|`int32`|(optional) flags filter<br/>*Available values: `0`, `1`, `2`, `4`, `128`*|
+|`type`|`int32`|(optional) type filter<br/>*Available values: `0`, `1`, `2`, `3`, `4`, `5`*|
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "seller": 0,
+      "app": 0,
+      "name": "string",
+      "full_name": "string",
+      "price": 0,
+      "image": 0,
+      "flags": 0,
+      "type": 0,
+      "currency": "string",
+      "code": "string"
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> buy_merch
+
+Buys merch from the store.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`merchId`|`int64`|merch ID|
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_categories
+
+Gets the list of categories.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`flags`|`int32`|flags<br/>*Available values: `0`, `1`, `2`, `3`, `4`, `5`*|
+|`includeApps`|`int32`|number of apps to include in the result<br/>*Default: `0`*|
+
+#### Response
+
+```json
+{
+  "result": [
+    {
+      "timetick": 0,
+      "parent": 0,
+      "flags": 0,
+      "name": "string",
+      "full_name": "string",
+      "display_position": 0,
+      "id": 0,
+      "apps": [
+        {
+          "timetick": 0,
+          "telegram_link": "string",
+          "game_link": "string",
+          "name": "string",
+          "full_name": "string",
+          "developer": "string",
+          "flags": 0,
+          "url_id": 0,
+          "small_img": 0,
+          "medium_img": 0,
+          "large_img": 0,
+          "categories": [
+            {
+              "category_name": "string",
+              "category_id": 0,
+              "position": 0
+            }
+          ],
+          "category_id": 0,
+          "position": 0
+        }
+      ]
+    }
+  ],
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_promo_task_status
+
+Gets promo task data for a certain promo task for caller.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`promo_task`|`int32`|promo task ID<br/>*Available values: `0`, `1`*|
+
+#### Response
+
+```json
+{
+  "result": 0,
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_teleuser_statistics
+
+Gets user's statistics (for caller or for caller's friend).
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`client_id`|`int64`|(optional) user ID|
+
+#### Response
+
+```json
+{
+  "result": {
+    "teleuser": 0,
+    "longest_streak": 0,
+    "total_friends": 0,
+    "total_apps_accessed": 0,
+    "level1ref": 0,
+    "level2ref": 0,
+    "level3ref": 0
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> join_ref_program
+
+Sends the request to join the referral program. Will check the eligibility first.
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> teleuser_details
+
+Gets caller's user data.
+
+#### Response
+
+```json
+{
+  "result": {
+    "timetick": 0,
+    "firstname": "string",
+    "lastname": "string",
+    "phone": "string",
+    "avatar_file": 0,
+    "email": "string",
+    "trex_id": 0,
+    "telegram": 0,
+    "agent_id": 0,
+    "agent_location": "string",
+    "agent_userid": "string",
+    "flags": 0,
+    "company_name": "string",
+    "app_limit": 0,
+    "new_user_tariff_group": 0,
+    "ga_id": "string",
+    "agent_code": "string",
+    "friend_code": "string",
+    "promotasks": [
+      {
+        "id": 0,
+        "max": 0,
+        "current": 0
+      }
+    ]
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type post">POST</span> join_as_developer
+
+Sends a request to change user status to developer.
+<div className="important">❗️ Developer and Client statuses are mutually exclusive.</div>
+
+#### Necessary data (First Name, Last Name, Company Name)
+
+```json
+{
+  "firstname": "string",
+  "lastname": "string",
+  "company_name": "string"
+}
+```
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> save_ga_id
+
+Saves Google Analytics ID.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`ga_id`|`string`|-|
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> report_pwa_install
+
+Reports PWA installation.
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+## Payment
+#### /api/v1/payment/
+
+### <span className="type get">GET</span> pay_card
+
+Creates card payment option.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`amount`|`int32`|amount in TeleUSD|
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> pay_hype
+
+Creates card payment option (HypePayment).
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`amount`|`int32`|amount in TeleUSD|
+
+#### Response
+
+```json
+{
+  "result": "string",
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+## Service
+#### /api/v1/service/
+
+### <span className="type post">POST</span> apply_code
+
+Applies a code, for example, agent code packed into a short code.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`code`|`string`|-|
+|`crm_id`|`int64`|-|
+
+#### Response
+
+```json
+{
+  "result": {
+    "confirmationStatusCode": 0,
+    "result": "string",
+    "confirmCode": "string"
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> client_details
+
+Gets user's CRM data in a certain format.
+
+#### Parameters
+
+|Name|Type|Description|
+|-|-|-|
+|`phone`|`string`|-|
+|`telegram`|`int64`|-|
+|`crm_id`|`int64`|-|
+|`email`|`string`|-|
+
+#### Response
+
+```json
+{
+  "result": {
+    "client_id": 0,
+    "first_name": "string",
+    "last_name": "string",
+    "phone": "string",
+    "email": "string",
+    "flags": 0,
+    "telegram": 0,
+    "agent_code": "string",
+    "wallet_id": 0,
+    "company_name": "string",
+    "avatar_file": 0,
+    "new_user_tariff_group": 0
+  },
+  "error": {
+    "code": 0,
+    "message": "string"
+  },
+  "id": 0
+}
+```
+
+### <span className="type get">GET</span> get_info
+
+Returns general service information (handshake/telemetry).
+
+#### Response
+
+```json
+{
+  "result": {
+    "project_name": "string",
+    "version": "string",
+    "utc_time": "2025-03-17T16:23:11.698Z"
+  },
   "error": {
     "code": 0,
     "message": "string"
