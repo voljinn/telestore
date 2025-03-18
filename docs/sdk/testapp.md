@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# TeleStore Test App
+# 🎮 TeleStore Test App
 
 ## Intro
 
@@ -13,15 +13,23 @@ The application consists of two parts: client-side and server-side. Your applica
 This documentation is also available at [GitHub](https://github.com/telestore-rep/test-app).
 
 ## Installation
+
+### Application
+You can view it at this link: https://test.tele.store
+
+### Source Code of the Application
+Available on GitHub at this link: https://github.com/telestore-rep/test-app.
+
+### Download
 ```
 sudo git clone https://github.com/telestore-rep/test-app telestore_test_app
 ```
 
 For launching the application, use [Docker](https://www.docker.com).
 
-## Client Side
+## Client side, option 1: without app authorisation.
 
-### Obtaining User Information without app authorization
+### Obtaining User Information
 
 To retrieve user information, redirect the user to the following TeleStore URL:
 ```
@@ -93,20 +101,20 @@ We do not recommend this validation method, as it requires storing your applicat
 
 [Client-Side Validation Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L159)
 
-### User Authorization via TeleStore (Client Session)
+## Client side, option 2: user authorisation through TeleStore (client session)
 
-If your application does not have a server-side, you can authorize your user via TeleStore. This will allow you to perform several authorized actions, such as retrieving user information, checking their balance, making a transfer to your application account, saving, or loading application data.
+If your application does not have a server-side, you can authorise your user via TeleStore. This will allow you to perform several authorised actions, such as retrieving user information, checking their balance, making a transfer to your application account, saving, or loading application data.
 
-#### Authorization via Redirect
+### Authorisation via Redirect
 
-You can authorize the user by redirecting to the following URL:
+You can authorise the user by redirecting to the following URL:
 ```
 https://web.tele.store/redirect_ext_auth.html?auth_app=${APP_URL_ID}
 ```
 
 Where `APP_URL_ID` is the URL identifier of your application registered in TeleStore (Profile ➡ Security ➡ App URLs).
 
-After successful authorization, the user is redirected to the following URL:
+After successful authorisation, the user is redirected to the following URL:
 ```
 {YOUR_APP_URL}/?auth_code={AUTH_CODE}
 ```
@@ -115,9 +123,9 @@ Subsequently, the `auth_code` can be used to create a new session.
 
 [Redirect Authentication Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L200)
 
-#### Authorization via Popup
+### Authorisation via Popup
 
-You can authorize the user by opening a URL inside a Popup window:
+You can authorise the user by opening a URL inside a Popup window:
 ```
 https://web.tele.store/redirect_ext_auth.html?auth_app=${APP_URL_ID}&popup=true
 ```
@@ -130,7 +138,7 @@ Where:
 
 ### Retrieving User Information
 
-To retrieve user information, send an authorized request to:
+To retrieve user information, send an authorised request to:
 ```
 GET https://web.tele.store/appauth/v1/get_teleuser_details
 ```
@@ -139,7 +147,7 @@ GET https://web.tele.store/appauth/v1/get_teleuser_details
 
 ### Retrieving User Balance
 
-To retrieve the user's balance, send an authorized request to:
+To retrieve the user's balance, send an authorised request to:
 ```
 GET https://web.tele.store/appauth/v1/get_balance
 ```
@@ -148,7 +156,7 @@ GET https://web.tele.store/appauth/v1/get_balance
 
 ### Making a Transfer to the Developer Account
 
-To transfer funds from a user's account to your account, send an authorized request to:
+To transfer funds from a user's account to your account, send an authorised request to:
 
 ```
 POST https://web.tele.store/appauth/v1/make_payment  
@@ -163,7 +171,7 @@ BODY {
 
 ### Saving Application Data
 
-You can save any necessary application information using an authorized request to:
+You can save any necessary application information using an authorised request to:
 ```
 POST https://web.tele.store/appauth/v1/save_app_user_data  
 BODY {  
@@ -175,7 +183,7 @@ BODY {
 
 ### Retrieving Application Data
 
-To retrieve application data, send an authorized request to:
+To retrieve application data, send an authorised request to:
 ```
 GET https://web.tele.store/appauth/v1/list_app_user_data
 ```
@@ -196,7 +204,7 @@ For easier development, we recommend using the [official TeleStore SDK](https://
 
 ### Retrieving Account Information
 
-To retrieve developer account information, send an authorized request to:
+To retrieve developer account information, send an authorised request to:
 ```
 GET https://web.tele.store/api/v1/teleuser_details
 ```
@@ -241,7 +249,7 @@ POST https://test.tele.store/webhook
 
 ### Retrieving Developer App List
 
-To retrieve the developer's app list, send an authorized request to:
+To retrieve the developer's app list, send an authorised request to:
 ```
 GET https://web.tele.store/api/v1/dev_list_my_apps
 ```
@@ -250,7 +258,7 @@ GET https://web.tele.store/api/v1/dev_list_my_apps
 
 ### Retrieving Developer Balance Information
 
-To retrieve developer balance information, send an authorized request to:
+To retrieve developer balance information, send an authorised request to:
 ```
 GET https://web.tele.store/trex/v1/wallet/get_balance
 PARAMS {
@@ -262,7 +270,7 @@ PARAMS {
 
 ### Creating a Transfer to a TeleStore User
 
-To create a transfer to a TeleStore user, send an authorized request to:
+To create a transfer to a TeleStore user, send an authorised request to:
 ```
 POST https://web.tele.store/trex/v1/wallet/internal_transfer
 BODY {
@@ -300,7 +308,7 @@ BODY {
 
 ### Retrieving TeleStore Transaction History
 
-To retrieve transaction history, send an authorized request to:
+To retrieve transaction history, send an authorised request to:
 ```
 GET https://web.tele.store/trex/v1/wallet/get_history_transactions
 PARAMS {
@@ -321,7 +329,7 @@ PARAMS {
 
 ### Retrieving Invoice List
 
-To retrieve the invoice list, send an authorized request to:
+To retrieve the invoice list, send an authorised request to:
 ```
 GET https://web.tele.store/trex/v1/list_tx_codes
 PARAMS {

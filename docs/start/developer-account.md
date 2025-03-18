@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Creating a Developer Account
+# 👤 Creating a Developer Account
 
 ## Registration
 

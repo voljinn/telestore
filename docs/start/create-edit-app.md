@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Creating and Editing Applications
+# 📲 Creating and Editing Applications
 
 ## General Information
 

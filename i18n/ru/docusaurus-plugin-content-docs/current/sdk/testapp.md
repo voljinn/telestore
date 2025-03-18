@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Тестовое приложение 
+# 🎮 Тестовое приложение 
 
 ## Интро
 
@@ -14,15 +14,23 @@ sidebar_position: 3
 
 <a href="install"></a>
 ## Установка
+
+### Приложение
+Можно посмотреть по этой ссылке: https://test.tele.store
+
+### Исходный код приложения
+Доступен на GitHub по ссылке: https://github.com/telestore-rep/test-app.
+
+### Загрузить 
 ```
 sudo git clone https://github.com/telestore-rep/test-app telestore_test_app
 ```
 
-Для запуска приложения используйте [Docker](https://www.docker.com).
+Для запуска приложения используйте [Docker](https://www.docker.com). 
 
-## Клиентская сторона (Client-Side)
+## Клиентская сторона, вариант 1: без авторизации приложения
 
-### Получение информации о пользователе без авторизации приложения
+### Получение информации о пользователе
 
 Чтобы получить информацию о пользователе, перенаправьте его по следующему URL-адресу TeleStore:
 ```
@@ -31,7 +39,7 @@ https://web.tele.store/redirect_ext_auth.html?get_user_info=${APP_URL_ID}
 
 где `APP_URL_ID` — это уникальный идентификатор URL вашего приложения, зарегистрированный в TeleStore (Профиль ➡ Безопасность ➡ URL приложений).
 
-[Пример перенаправления пользователя](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L152)
+<span className="button p-5">[Пример перенаправления пользователя](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L152)</span>
 
 После получения данных TeleStore перенаправляет пользователя обратно в ваше приложение по следующему URL:
 ```
@@ -86,15 +94,15 @@ const checkStrBase64 = toBase64Url(hmacHash);
 
 Вы можете выполнять валидацию полученных данных на своем сервере, отправляя данные из своего клиентского приложения и затем выполняя необходимые шаги по валидации.
 
-[Пример валидации на серверной стороне](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/validate_usr_info/route.ts#L21)
+<span className="button p-5">[Пример валидации на серверной стороне](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/validate_usr_info/route.ts#L21)</span>
 
 #### Валидация на клиентской стороне
 
 Мы не рекомендуем этот метод валидации, так как он требует хранения открытого ключа вашего приложения на клиентской стороне, что может снизить безопасность вашего приложения.
 
-[Пример валидации на клиентской стороне](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L159)
+<span className="button p-5">[Пример валидации на клиентской стороне](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L159)</span>
 
-### Авторизация пользователя через TeleStore (Клиентская сессия)
+## Клиентская сторона, вариант 2: авторизация пользователя через TeleStore (клиентская сессия)
 
 Если ваше приложение не имеет серверной части, вы можете авторизовать пользователя через TeleStore. Это позволит вам выполнять несколько авторизованных действий, таких как получение информации о пользователе, проверка их баланса, перевод на счет вашего приложения, сохранение или загрузка данных приложения.  
 
@@ -115,7 +123,7 @@ https://web.tele.store/redirect_ext_auth.html?auth_app=${APP_URL_ID}
 
 Впоследствии `auth_code` может быть использован для создания новой сессии.  
 
-[Пример авторизации через редирект](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L200)
+<span className="button p-5">[Пример авторизации через редирект](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L200)</span>
 
 #### Авторизация через всплывающее окно
 
@@ -128,7 +136,7 @@ https://web.tele.store/redirect_ext_auth.html?auth_app=${APP_URL_ID}&popup=true
 - `APP_URL_ID` — идентификатор URL вашего приложения, зарегистрированного в TeleStore (Профиль ➡ Безопасность ➡ URL приложений).
 - `popup=true` — обязательный параметр для успешной аутентификации.  
 
-[Пример авторизации через всплывающее окно](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L207)
+<span className="button p-5">[Пример авторизации через всплывающее окно](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L207)</span>
 
 ### Получение информации о пользователе
 
@@ -137,7 +145,7 @@ https://web.tele.store/redirect_ext_auth.html?auth_app=${APP_URL_ID}&popup=true
 GET https://web.tele.store/appauth/v1/get_teleuser_details
 ```
 
-[Пример получения данных пользователя](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L125)
+<span className="button p-5">[Пример получения данных пользователя](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L125)</span>
 
 ### Получение баланса пользователя
 
@@ -146,7 +154,7 @@ GET https://web.tele.store/appauth/v1/get_teleuser_details
 GET https://web.tele.store/appauth/v1/get_balance
 ```
 
-[Пример получения баланса пользователя](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L180)
+<span className="button p-5">[Пример получения баланса пользователя](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L180)</span>
 
 ### Перевод средств на счет разработчика
 
@@ -161,7 +169,7 @@ BODY {
 }
 ```
 
-[Пример перевода на счет разработчика](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L232)
+<span className="button p-5">[Пример перевода на счет разработчика](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L232)</span>
 
 ### Сохранение данных приложения
 
@@ -173,7 +181,7 @@ BODY {
 }
 ```
 
-[Пример сохранения данных приложения](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L261)  
+<span className="button p-5">[Пример сохранения данных приложения](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L261)</span>  
 
 ### Получение данных приложения
 
@@ -182,9 +190,9 @@ BODY {
 GET https://web.tele.store/appauth/v1/list_app_user_data
 ```
 
-[Пример получения данных приложения](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L281)
+<span className="button p-5">[Пример получения данных приложения](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L281)</span>
 
-## Серверная сторона (Server-Side)
+## Серверная сторона
 
 ### TeleStore SDK
 
@@ -194,7 +202,7 @@ GET https://web.tele.store/appauth/v1/list_app_user_data
 
 [//]: # (Для создания новой сессии вам необходимо сгенерировать новый Ключ пользователя в вашем аккаунте разработчика TeleStore &#40;Профиль ➡ Безопасность ➡ Ключи пользователя&#41; &#40;подробнее см. в разделе [Получение Ключа пользователя]&#40;userkey.md&#41;&#41;)
 
-[Пример создания сессии через SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/sdk_connect/route.ts#L7)
+<span className="button p-5">[Пример создания сессии через SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/sdk_connect/route.ts#L7)</span>
 
 ### Получение информации об аккаунте
 
@@ -203,7 +211,7 @@ GET https://web.tele.store/appauth/v1/list_app_user_data
 GET https://web.tele.store/api/v1/teleuser_details
 ```
 
-[Пример получения информации об аккаунте](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/teleuser_detailts/route.ts#L8)
+<span className="button p-5">[Пример получения информации об аккаунте](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/teleuser_detailts/route.ts#L8)</span>
 
 ### Подписка на SSE
 
@@ -230,7 +238,7 @@ esLink.onerror = (error) => {
 }
 ```
 
-[Пример подключения SSE](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/connect_sse/route.ts#L17)
+<span className="button p-5">[Пример подключения SSE](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/connect_sse/route.ts#L17)</span>
 
 ### Получение вебхуков
 
@@ -239,7 +247,7 @@ esLink.onerror = (error) => {
 POST https://test.tele.store/webhook
 ```
 
-[Пример вебхука](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/webhook/route.ts#L10)
+<span className="button p-5">[Пример вебхука](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/webhook/route.ts#L10)</span>
 
 ### Получение списка приложений разработчика
 
@@ -248,7 +256,7 @@ POST https://test.tele.store/webhook
 GET https://web.tele.store/api/v1/dev_list_my_apps
 ```
 
-[Пример получения списка приложений разработчика](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/dev_list_apps/route.ts#L8)
+<span className="button p-5">[Пример получения списка приложений разработчика](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/dev_list_apps/route.ts#L8)</span>
 
 ### Получение информации о балансе разработчика
 
@@ -260,7 +268,7 @@ PARAMS {
 }
 ```
 
-[Пример получения информации о балансе разработчика](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/balance_info/route.ts#L8)  
+<span className="button p-5">[Пример получения информации о балансе разработчика](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/balance_info/route.ts#L8)</span>
 
 ### Создание перевода пользователю TeleStore
 
@@ -298,7 +306,7 @@ BODY {
 }
 ```
 
-[Пример создания перевода на пользователя TeleStore](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/server/page.tsx#L204) 
+<span className="button p-5">[Пример создания перевода на пользователя TeleStore](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/server/page.tsx#L204)</span> 
 
 ### Получение истории транзакций TeleStore
 
@@ -315,11 +323,11 @@ PARAMS {
 }
 ```
 
-[Пример получения истории транзакций](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/get_transactions/route.ts#L9)  
+<span className="button p-5">[Пример получения истории транзакций](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/get_transactions/route.ts#L9)</span>  
 
 ### Создание инвойса
 
-[Пример создания инвойса через SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/server/page.tsx#L175)  
+<span className="button p-5">[Пример создания инвойса через SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/server/page.tsx#L175)</span>
 
 ### Получение списка инвойсов
 
@@ -331,4 +339,4 @@ PARAMS {
 }
 ```
 
-[Пример получения списка инвойсов](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/get_invoices/route.ts#L8)  
+<span className="button p-5">[Пример получения списка инвойсов](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/get_invoices/route.ts#L8)</span>  

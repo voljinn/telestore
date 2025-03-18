@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Intro
+# 👋 Intro
 
 Welcome to the documentation for the TeleStore web applications and games marketplace for developers. This section describes how to register a developer account, properly configure and publish your applications and games, and use the TeleStore API and SDK for payment processing, user analytics, and more.
 

@@ -60,6 +60,11 @@ div.button:hover {
   color: var(--ifm-color-primary);
 }
 
+.button.p-5 {
+  padding: 5px 15px;
+  margin-bottom: 25px;
+}
+
 .hint, .important {
   padding: 5px 15px;
   margin: 15px auto;
