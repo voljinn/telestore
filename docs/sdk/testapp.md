@@ -38,7 +38,7 @@ https://web.tele.store/redirect_ext_auth.html?get_user_info=${APP_URL_ID}
 
 Where `APP_URL_ID`  is the URL identifier of your application registered in TeleStore (Profile ➡ Security ➡ App URLs).
 
-[User Redirection Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L152)
+<span className="button p-5">[User Redirection Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L152)</span>
 
 After retrieving the data, TeleStore redirects the user back to your application at the following URL:
 ```
@@ -93,13 +93,13 @@ If the signature is correct and the timestamp is not too old, then the developer
 
 You can validate the received data on your server by sending it from your client application and then performing the necessary validation steps.
 
-[Server-Side Validation Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/validate_usr_info/route.ts#L21)
+<span className="button p-5">[Server-Side Validation Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/validate_usr_info/route.ts#L21)</span>
 
 #### Client-Side Validation
 
 We do not recommend this validation method, as it requires storing your application's public key on the client side, which may reduce the security of your application.
 
-[Client-Side Validation Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L159)
+<span className="button p-5">[Client-Side Validation Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L159)</span>
 
 ## Client side, option 2: user authorisation through TeleStore (client session)
 
@@ -121,7 +121,7 @@ After successful authorisation, the user is redirected to the following URL:
 
 Subsequently, the `auth_code` can be used to create a new session.
 
-[Redirect Authentication Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L200)
+<span className="button p-5">[Redirect Authentication Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L200)</span>
 
 ### Authorisation via Popup
 
@@ -134,7 +134,7 @@ Where:
 - `APP_URL_ID` is the URL identifier of your application registered in TeleStore (Profile ➡ Security ➡ App URLs).
 - `popup=true` is a required parameter for successful authentication.
 
-[Popup Authentication Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L207)
+<span className="button p-5">[Popup Authentication Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L207)</span>
 
 ### Retrieving User Information
 
@@ -143,7 +143,7 @@ To retrieve user information, send an authorised request to:
 GET https://web.tele.store/appauth/v1/get_teleuser_details
 ```
 
-[User Data Retrieval Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L125)
+<span className="button p-5">[User Data Retrieval Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L125)</span>
 
 ### Retrieving User Balance
 
@@ -152,7 +152,7 @@ To retrieve the user's balance, send an authorised request to:
 GET https://web.tele.store/appauth/v1/get_balance
 ```
 
-[User Balance Retrieval Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L180)
+<span className="button p-5">[User Balance Retrieval Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L180)</span>
 
 ### Making a Transfer to the Developer Account
 
@@ -167,7 +167,7 @@ BODY {
 }
 ```
 
-[Transfer to Developer Account Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L232)
+<span className="button p-5">[Transfer to Developer Account Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L232)</span>
 
 ### Saving Application Data
 
@@ -179,7 +179,7 @@ BODY {
 }
 ```
 
-[Save Application Data Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L261)
+<span className="button p-5">[Save Application Data Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L261)</span>
 
 ### Retrieving Application Data
 
@@ -188,7 +188,7 @@ To retrieve application data, send an authorised request to:
 GET https://web.tele.store/appauth/v1/list_app_user_data
 ```
 
-[Retrieve Application Data Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L281)
+<span className="button p-5">[Retrieve Application Data Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L281)</span>
 
 ## Server Side
 
@@ -200,7 +200,7 @@ For easier development, we recommend using the [official TeleStore SDK](https://
 
 [//]: # (To create a new session, you need to generate a new User Key in your TeleStore developer account &#40;Profile ➡ Security ➡ User keys&#41;.)
 
-[Example of session creation via SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/sdk_connect/route.ts#L7)
+<span className="button p-5">[Example of session creation via SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/sdk_connect/route.ts#L7)</span>
 
 ### Retrieving Account Information
 
@@ -209,7 +209,7 @@ To retrieve developer account information, send an authorised request to:
 GET https://web.tele.store/api/v1/teleuser_details
 ```
 
-[Example of retrieving account information](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/teleuser_detailts/route.ts#L8)
+<span className="button p-5">[Example of retrieving account information](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/teleuser_detailts/route.ts#L8)</span>
 
 ### Subscribing to SSE
 
@@ -236,7 +236,7 @@ esLink.onerror = (error) => {
 }
 ```
 
-[Example of SSE connection](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/connect_sse/route.ts#L17)
+<span className="button p-5">[Example of SSE connection](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/connect_sse/route.ts#L17)</span>
 
 ### Receiving Webhooks
 
@@ -245,7 +245,7 @@ To receive webhooks, add a new App URL (Profile ➡ Security ➡ Apps URLs), spe
 POST https://test.tele.store/webhook
 ```
 
-[Webhook example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/webhook/route.ts#L10)
+<span className="button p-5">[Webhook example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/webhook/route.ts#L10)</span>
 
 ### Retrieving Developer App List
 
@@ -254,7 +254,7 @@ To retrieve the developer's app list, send an authorised request to:
 GET https://web.tele.store/api/v1/dev_list_my_apps
 ```
 
-[Example of retrieving developer app list](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/dev_list_apps/route.ts#L8)
+<span className="button p-5">[Example of retrieving developer app list](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/dev_list_apps/route.ts#L8)</span>
 
 ### Retrieving Developer Balance Information
 
@@ -266,7 +266,7 @@ PARAMS {
 }
 ```
 
-[Example of retrieving developer balance information](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/balance_info/route.ts#L8)
+<span className="button p-5">[Example of retrieving developer balance information](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/balance_info/route.ts#L8)</span>
 
 ### Creating a Transfer to a TeleStore User
 
@@ -304,7 +304,7 @@ BODY {
 }
 ```
 
-[Example of creating a transfer to a TeleStore user](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/server/page.tsx#L204)
+<span className="button p-5">[Example of creating a transfer to a TeleStore user](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/server/page.tsx#L204)</span>
 
 ### Retrieving TeleStore Transaction History
 
@@ -321,11 +321,11 @@ PARAMS {
 }
 ```
 
-[Example of retrieving transaction history](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/get_transactions/route.ts#L9)
+<span className="button p-5">[Example of retrieving transaction history](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/get_transactions/route.ts#L9)</span>
 
 ### Creating an Invoice
 
-[Example of invoice creation via SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/server/page.tsx#L175)
+<span className="button p-5">[Example of invoice creation via SDK](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/server/page.tsx#L175)</span>
 
 ### Retrieving Invoice List
 
@@ -337,4 +337,4 @@ PARAMS {
 }
 ```
 
-[Example of retrieving invoice list](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/get_invoices/route.ts#L8)  
+<span className="button p-5">[Example of retrieving invoice list](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/api/get_invoices/route.ts#L8)</span>  
