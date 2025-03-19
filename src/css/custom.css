@@ -33,6 +33,29 @@
   color: black;
 }
 
+/* Custom TeleStore */
+
+th, td {
+  min-width: 275px;
+}
+
+td {
+  vertical-align: top;
+}
+
+.flex {
+  display: flex;
+}
+
+.w-3 {
+  width: 300px;
+}
+
+.ms-1 {
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
 .disabled {
   color: #555
 }
