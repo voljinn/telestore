@@ -36,7 +36,7 @@ To retrieve user information, redirect the user to the following TeleStore URL:
 https://web.tele.store/redirect_ext_auth.html?get_user_info=${APP_URL_ID}
 ```
 
-Where `APP_URL_ID`  is the URL identifier of your application registered in TeleStore (Profile ➡ Security ➡ App URLs).
+Where `APP_URL_ID`  is the URL identifier of your application registered in TeleStore (Profile ➡ Security ➡ Apps URLs).
 
 <span className="button p-5">[User Redirection Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L152)</span>
 
@@ -112,7 +112,7 @@ You can authorise the user by redirecting to the following URL:
 https://web.tele.store/redirect_ext_auth.html?auth_app=${APP_URL_ID}
 ```
 
-Where `APP_URL_ID` is the URL identifier of your application registered in TeleStore (Profile ➡ Security ➡ App URLs).
+Where `APP_URL_ID` is the URL identifier of your application registered in TeleStore (Profile ➡ Security ➡ Apps URLs).
 
 After successful authorisation, the user is redirected to the following URL:
 ```
@@ -131,7 +131,7 @@ https://web.tele.store/redirect_ext_auth.html?auth_app=${APP_URL_ID}&popup=true
 ```
 
 Where:
-- `APP_URL_ID` is the URL identifier of your application registered in TeleStore (Profile ➡ Security ➡ App URLs).
+- `APP_URL_ID` is the URL identifier of your application registered in TeleStore (Profile ➡ Security ➡ Apps URLs).
 - `popup=true` is a required parameter for successful authentication.
 
 <span className="button p-5">[Popup Authentication Example](https://github.com/telestore-rep/test-app/blob/ff743c7db872b19f9ac69f32fabdf2c59dd6f737/src/app/client/page.tsx#L207)</span>
