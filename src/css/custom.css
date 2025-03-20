@@ -67,9 +67,18 @@ td {
 .button {
   color: var(--ifm-color-primary);
   background: var(--ifm-code-background);
-  padding: 2px 4px;
+  padding: 5px 10px;
   border-radius: 5px;
   font-weight: bold;
+  vertical-align: 0;
+}
+
+span.button a {
+  text-decoration: underline;
+}
+
+span.button:hover a {
+  color: var(--ifm-color-primary-lightest);
 }
 
 .checkbox {
