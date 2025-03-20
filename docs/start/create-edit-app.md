@@ -45,7 +45,7 @@ Each application must have:
 
 <div className="ms-1">3.3. Choose one or more *Categories.</div>
 
-<blockquote className="ms-1">Enter the link to the Telegram group or channel (if available).</blockquote>
+<blockquote className="ms-1">If you want a separate version of your application to open from the Telegram version of TeleStore (for example, for user authentication through their Telegram account), add this link in the <div className="button">Telegram Link</div> field.</blockquote>
 
 <div className="ms-1">3.4. Click on the field below (**Name, ID, URL**), select the previously created App URL, and make sure the field is switched to <div className="checkbox">&nbsp;on&nbsp;</div>.</div>
 
