@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb8927cb-5909-4708-b8d8-7b3aa8eaf68e" name="Changes" comment="" />
+    <list default="true" id="bb8927cb-5909-4708-b8d8-7b3aa8eaf68e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/start/create-edit-app.md" beforeDir="false" afterPath="$PROJECT_DIR$/i18n/ru/docusaurus-plugin-content-docs/current/start/create-edit-app.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +108,9 @@
       <workItem from="1741358151875" duration="34458000" />
       <workItem from="1742143440306" duration="192000" />
       <workItem from="1742143674049" duration="60643000" />
-      <workItem from="1742460000504" duration="2284000" />
+      <workItem from="1742460000504" duration="2683000" />
+      <workItem from="1742490547318" duration="1763000" />
+      <workItem from="1742674092533" duration="740000" />
     </task>
     <servers />
   </component>
